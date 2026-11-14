@@ -372,7 +372,7 @@
       grid.textContent = "";
       var box = el("p", "load-error");
       box.textContent = "游戏清单载入失败，可直接打开：";
-      ["mistloop", "dreamscape", "darkfairytale", "meowmatch"].forEach(function (slug) {
+      ["mistloop", "dreamscape", "darkfairytale", "meowmatch", "bigfatfish"].forEach(function (slug) {
         var a = el("a", null, slug + " ↗");
         a.href = "./" + slug + "/";
         a.style.marginRight = "12px";
