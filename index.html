@@ -193,6 +193,7 @@
   <div class="top-bar">
     <span>PENPEN / FOLIO 2026 · GAME ARCADE</span>
     <a href="https://stdwang.github.io/penpenWeb/">↗ 返回个人作品集</a>
+    <a id="portfolio-mirror" href="#" hidden>↗ 作品集（国内镜像）</a>
   </div>
 
   <header>
@@ -279,6 +280,15 @@
 
   function render(catalog) {
     grid.textContent = "";
+    // 镜像自身不需要再展示「备用入口」；且 WorkBuddy 分享码必须拼在每个游戏地址上，
+    // 否则从未访问过镜像首页的浏览器会被 403 拦下。
+    var share = catalog.backupShare || "";
+    var onBackupHost = false;
+    try {
+      onBackupHost = Boolean(catalog.backupBase) &&
+        location.hostname === new URL(catalog.backupBase).hostname;
+    } catch (e) { /* 忽略无效的备用地址 */ }
+    var showBackup = Boolean(catalog.backupBase) && !onBackupHost;
     catalog.games.forEach(function (game, index) {
       var card = el("article", "card");
 
@@ -314,9 +324,9 @@
       });
       actions.appendChild(play);
 
-      if (catalog.backupBase) {
+      if (showBackup) {
         var backup = el("a", "btn ghost", catalog.backupLabel + " ↗");
-        backup.href = catalog.backupBase.replace(/\/$/, "") + "/" + game.slug + "/";
+        backup.href = catalog.backupBase.replace(/\/$/, "") + "/" + game.slug + "/" + share;
         backup.target = "_blank";
         backup.rel = "noopener";
         actions.appendChild(backup);
@@ -343,8 +353,13 @@
 
     document.getElementById("catalog-notice").textContent = catalog.notice;
     if (catalog.backupBase) {
+      var mirror = document.getElementById("portfolio-mirror");
+      mirror.href = catalog.backupBase.replace(/\/$/, "") + "/portfolio/" + share;
+      mirror.hidden = false;
+    }
+    if (showBackup) {
       var link = document.getElementById("backup-link");
-      link.href = catalog.backupBase;
+      link.href = catalog.backupBase.replace(/\/$/, "") + "/" + share;
       link.textContent = catalog.backupLabel + " · 打不开主站时点这里 ↗";
       link.hidden = false;
     }
