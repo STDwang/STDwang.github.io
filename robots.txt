@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 只提供浏览器试玩，不希望大体积构建产物与资源清单被抓取和索引
+Disallow: /*.pck$
+Disallow: /*.wasm$
+Disallow: /meowmatch/assets/
+Disallow: /covers/
