@@ -1,0 +1,58 @@
+name: Verify published game artifacts
+
+# 公开橱窗仓库的持续防线：任何提交只要把源码 / 工程配置 / 密钥带进游戏目录，
+# 这条工作流就直接失败，避免私有项目的 .gd / .ts / project.godot 等被误提交。
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 校验游戏目录只包含构建产物
+        shell: bash
+        run: |
+          set -euo pipefail
+          games='^(darkfairytale|dreamscape|meowmatch|mistloop)/'
+          allow='\.(html|js|mjs|wasm|pck|css|bin|json|txt|png|jpe?g|webp|gif|svg|ico|avif|wav|mp3|ogg|m4a|glb|gltf|ttf|woff2?)$'
+          mapfile -t files < <(git ls-files | grep -E "$games" || true)
+          echo "游戏产物文件数: ${#files[@]}"
+          bad=0
+          for f in "${files[@]}"; do
+            [ -z "$f" ] && continue
+            if ! [[ "$f" =~ $allow ]]; then
+              echo "::error file=$f::后缀不在产物白名单，疑似源码或工程文件"
+              bad=$((bad + 1))
+            fi
+            case "$f" in
+              *project.godot|*export_presets.cfg|*package.json|*package-lock.json|*tsconfig.json|*.pem|*.key|*.env|*.map|*.sourcemap)
+                echo "::error file=$f::禁止的工程 / 密钥类文件"
+                bad=$((bad + 1));;
+            esac
+          done
+          if [ "$bad" -gt 0 ]; then
+            echo "发现 $bad 个违规文件，拒绝合并"
+            exit 1
+          fi
+          echo "✓ 后缀白名单通过"
+
+      - name: 扫描产物中的凭据特征
+        shell: bash
+        run: |
+          set -euo pipefail
+          hits=$(grep -RIlE '-----BEGIN [A-Z ]*PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}' \
+            darkfairytale dreamscape meowmatch mistloop \
+            --include='*.js' --include='*.mjs' --include='*.json' --include='*.html' --include='*.txt' \
+            2>/dev/null || true)
+          if [ -n "$hits" ]; then
+            echo "::error::疑似凭据文件:"
+            echo "$hits"
+            exit 1
+          fi
+          echo "✓ 凭据扫描通过"
