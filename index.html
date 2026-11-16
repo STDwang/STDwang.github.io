@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>penpen · 游戏橱窗 — AI 辅助开发，浏览器直接试玩</title>
-<meta name="description" content="王帅鹏（penpen）用 AI 辅助开发的各种技术路线游戏合集：Three.js 程序化世界、Godot + Blender 程序化建模、Cocos 小游戏，打开即玩，无需安装。">
+<meta name="description" content="王帅鹏（penpen）用 AI 辅助开发的各种技术路线游戏合集：Three.js 程序化世界、Godot + Blender 程序化建模、Cocos 小游戏、Canvas 2.5D 与摩托 CAN/TFT 实时 HMI 实验台，打开即玩，无需安装。">
 <style>
   :root {
     --paper: #f0efe9;
@@ -201,6 +201,7 @@
     <h1>游戏橱窗<small>全部浏览器直接试玩</small></h1>
     <p class="intro">
       这里是我用 AI 辅助开发的各种技术路线小游戏——有的走 Web 程序化生成，有的走引擎 + 建模流水线。
+      APEX · 摩托 HMI 由自己的仓库独立部署，卡片会新窗口打开其线上版本，并单列国内备用入口。
       点开卡片即可试玩，无需安装任何东西。看工程案例请回
       <a href="https://stdwang.github.io/penpenWeb/">个人作品集</a>，看全部仓库请去
       <a href="https://github.com/STDwang" target="_blank" rel="noopener">GitHub</a>。
@@ -212,6 +213,7 @@
       <span>Cocos Creator 3.8</span>
       <span>Blender bpy 程序化建模</span>
       <span>程序化音频</span>
+      <span>CAN / DBC / TFT</span>
     </div>
   </header>
 
@@ -317,16 +319,32 @@
       body.appendChild(keys);
 
       var actions = el("div", "actions");
-      var play = el("button", "btn primary", "▶ 开始试玩");
-      play.type = "button";
-      play.addEventListener("click", function () {
-        openPlayer("./" + game.slug + "/", game.title + " · " + game.en);
-      });
+      var play;
+      if (game.playUrl) {
+        // 独立部署的游戏：新窗口打开它自己的线上版本，橱窗内不存放构建产物。
+        play = el("a", "btn primary", "▶ 开始试玩 ↗");
+        play.href = game.playUrl;
+        play.target = "_blank";
+        play.rel = "noopener";
+      } else {
+        play = el("button", "btn primary", "▶ 开始试玩");
+        play.type = "button";
+        play.addEventListener("click", function () {
+          openPlayer("./" + game.slug + "/", game.title + " · " + game.en);
+        });
+      }
       actions.appendChild(play);
 
-      if (showBackup) {
+      var backupHref = game.backupUrl || (showBackup && catalog.backupBase
+        ? catalog.backupBase.replace(/\/$/, "") + "/" + game.slug + "/" + share
+        : "");
+      try {
+        // 已经在该独立备用应用里时不再自链。
+        if (game.backupUrl && location.hostname === new URL(game.backupUrl).hostname) backupHref = "";
+      } catch (e) { /* 忽略无效的备用地址 */ }
+      if (backupHref) {
         var backup = el("a", "btn ghost", catalog.backupLabel + " ↗");
-        backup.href = catalog.backupBase.replace(/\/$/, "") + "/" + game.slug + "/" + share;
+        backup.href = backupHref;
         backup.target = "_blank";
         backup.rel = "noopener";
         actions.appendChild(backup);
