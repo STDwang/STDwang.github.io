@@ -11,14 +11,14 @@
 | 梦境废墟 Dreamscape | Godot 4.7 + Blender | 公开：[STDwang/Dreamscape](https://github.com/STDwang/Dreamscape) |
 | 黑暗童话 DarkFairyTale | Godot 4.7 Web | **私有**，仅构建产物 |
 | 喵饭家族争夺战 MeowMatch | Cocos Creator 3.8 | **私有**，仅构建产物 |
-| 深渊花园 Abyssal Garden | WebGPU / WGSL | **私有归档**，仅构建产物；上游为 [Noniv/abyssal-garden](https://github.com/Noniv/abyssal-garden)（MIT） |
+| 深海花园 Deep Sea Garden | WebGPU / WGSL | **私有归档**，仅构建产物；上游为 [Noniv/abyssal-garden](https://github.com/Noniv/abyssal-garden)（MIT） |
 
 ## 使用条款
 
 - 允许：个人在浏览器中试玩、在作品集或简历中链接本页。
 - 禁止：反编译 / 解包 `.pck` 与打包脚本、二次分发资源、用于商业用途、声称源码为自己所有。
 - 浏览器必然下载全部客户端资源，因此「源码私有」不等于「代码不可见」；本仓库只保证不公开可编译的工程源码。
-- 例外：深渊花园的上游代码采用 MIT 许可（© 2026 Maksymilian Dendra），该部分允许再分发与商用；上述「禁止二次分发」条款不适用于其上游开源代码，但不得声称原作为自己所有或去除原作者署名。
+- 例外：深海花园的上游代码采用 MIT 许可（© 2026 Maksymilian Dendra），该部分允许再分发与商用；上述「禁止二次分发」条款不适用于其上游开源代码，但不得声称原作为自己所有或去除原作者署名。
 
 ## 维护
 
