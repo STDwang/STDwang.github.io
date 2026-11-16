@@ -168,7 +168,7 @@
       "backupUrl": "https://wbapp-5qspg4vbu8mo6se3cxxq2a.app.workbuddy.host/?sharecode=S7BRNCGVMQ"
     },
     {
-      "slug": "abyssal-garden",
+      "slug": "deep-sea-garden",
       "title": "深海花园",
       "en": "DEEP SEA GARDEN",
       "badge": "WEBGPU · 中文版 · 源码私有",
@@ -180,7 +180,7 @@
         "WebAudio 实时合成",
         "全中文界面"
       ],
-      "desc": "一片完全由代码生成的海底世界：海草森林随水流摇曳，光柱穿过水体，沉船静卧在峡谷边，蝠鲼从头顶掠过。地形、体积雾与生态分布全部跑在 GPU 计算着色器里，没有一张图片和一个模型文件。这是中文界面版本，基于 Noniv/abyssal-garden（MIT）改造，需桌面版 Chrome / Edge。",
+      "desc": "一片完全由代码生成的海底世界：海草森林随水流摇曳，光柱穿过水体，沉船静卧在峡谷边，蝠鲼从头顶掠过。地形、体积雾与生态分布全部跑在 GPU 计算着色器里，没有一张图片和一个模型文件。中文界面版本，需桌面版 Chrome / Edge。",
       "keys": [
         "WASD 游动",
         "Q/E 下潜上浮",
@@ -190,7 +190,7 @@
         "M 静音",
         "H 性能统计"
       ],
-      "cover": "covers/abyssal-garden.webp",
+      "cover": "covers/deep-sea-garden.webp",
       "coverAlt": "深海花园：阳光穿过海草森林照进海底峡谷",
       "source": "",
       "private": true,
