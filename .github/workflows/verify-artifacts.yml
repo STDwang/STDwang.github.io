@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          games='^(darkfairytale|dreamscape|meowmatch|mistloop)/'
+          games='^(abyssal-garden|darkfairytale|dreamscape|meowmatch|mistloop)/'
           allow='\.(html|js|mjs|wasm|pck|css|bin|json|txt|png|jpe?g|webp|gif|svg|ico|avif|wav|mp3|ogg|m4a|glb|gltf|ttf|woff2?)$'
           mapfile -t files < <(git ls-files | grep -E "$games" || true)
           echo "游戏产物文件数: ${#files[@]}"
@@ -47,7 +47,7 @@ jobs:
         run: |
           set -euo pipefail
           hits=$(grep -RIlE '-----BEGIN [A-Z ]*PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}' \
-            darkfairytale dreamscape meowmatch mistloop \
+            abyssal-garden darkfairytale dreamscape meowmatch mistloop \
             --include='*.js' --include='*.mjs' --include='*.json' --include='*.html' --include='*.txt' \
             2>/dev/null || true)
           if [ -n "$hits" ]; then
