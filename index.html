@@ -224,14 +224,14 @@
   <noscript>
     <section class="note">
       <p>本页需要 JavaScript 读取游戏清单。也可以直接打开：</p>
-      <p><a href="./mistloop/">雾林回环</a> · <a href="./dreamscape/">梦境废墟</a> · <a href="./darkfairytale/">黑暗童话</a> · <a href="./meowmatch/">喵饭家族争夺战</a></p>
+      <p><a href="./deep-sea-garden/">深海花园</a> · <a href="./darkfairytale/">黑暗童话</a> · <a href="./meowmatch/">喵饭家族争夺战</a> · <a href="./bigfatfish/">大肥鱼大战菲比</a> · <a href="./motorcycle-hmi/">APEX 摩托 HMI</a></p>
     </section>
   </noscript>
 
   <section class="note">
     <p><strong>关于试玩与源码。</strong> <span id="catalog-notice">源码未公开的游戏仅提供构建产物供在线试玩；请勿反编译、二次分发或用于商业用途。</span></p>
     <p>· 游戏均需键盘与鼠标，手机上仅供观赏封面，请用桌面浏览器打开；Godot / Cocos 构建包较大，首次加载请稍等。</p>
-    <p>· 公开源码的两个项目可在对应仓库看到完整开发过程；另两个项目源码仓库保持私有，本站点只放可直接运行的构建产物。</p>
+    <p>· 公开源码的项目可在对应仓库看到完整开发过程；源码未公开的项目仓库保持私有，本站点只放可直接运行的构建产物。</p>
   </section>
 
   <footer>
@@ -390,7 +390,7 @@
       grid.textContent = "";
       var box = el("p", "load-error");
       box.textContent = "游戏清单载入失败，可直接打开：";
-      ["mistloop", "dreamscape", "darkfairytale", "meowmatch", "bigfatfish"].forEach(function (slug) {
+      ["deep-sea-garden", "darkfairytale", "meowmatch", "bigfatfish", "motorcycle-hmi"].forEach(function (slug) {
         var a = el("a", null, slug + " ↗");
         a.href = "./" + slug + "/";
         a.style.marginRight = "12px";

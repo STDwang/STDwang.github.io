@@ -8,60 +8,6 @@
   "notice": "源码未公开的游戏仅提供构建产物供在线试玩；请勿反编译、二次分发或用于商业用途。",
   "games": [
     {
-      "slug": "mistloop",
-      "title": "雾林回环",
-      "en": "MISTLOOP",
-      "badge": "THREE.JS / WEBGL2",
-      "route": "Web 程序化生成",
-      "tech": [
-        "Three.js",
-        "Vite",
-        "程序化噪声地形",
-        "程序化音频"
-      ],
-      "desc": "寂静岭式第一人称恐怖短片：深山老林、浓雾、阴沉天。你在数学上的环面里行走——走了三公里，坐标却回到原点，而雾只让你看见 40 米。雾气深处，那个只在你视线之外移动的身影，正一次次逼近。建议戴耳机。",
-      "keys": [
-        "WASD 移动",
-        "Shift 奔跑",
-        "鼠标 转头",
-        "F 手电筒",
-        "Esc 暂停"
-      ],
-      "cover": "covers/mistloop.webp",
-      "coverAlt": "MISTLOOP：浓雾笼罩的程序化森林",
-      "source": "https://github.com/STDwang/mistloop",
-      "private": false,
-      "size": "4.6 MB",
-      "accent": "blue"
-    },
-    {
-      "slug": "dreamscape",
-      "title": "梦境废墟",
-      "en": "DREAMSCAPE",
-      "badge": "GODOT 4.7 + BLENDER",
-      "route": "引擎 + 建模流水线",
-      "tech": [
-        "Godot 4.7.2",
-        "Blender 5.2 bpy",
-        "GLB 程序化资产"
-      ],
-      "desc": "一只穿盔甲、扛宝剑的小猫骑士，在被绿植覆盖的废弃小镇梦境里自由探索。约 1800 个物件、12 条锦鲤、萤火虫与流动水面，全部由脚本程序化生成，治愈系废墟美学。",
-      "keys": [
-        "WASD 移动",
-        "Shift 奔跑",
-        "空格 跳跃",
-        "鼠标 视角",
-        "左键/J 挥剑",
-        "右键 冲刺"
-      ],
-      "cover": "covers/dreamscape.webp",
-      "coverAlt": "Dreamscape：盔甲小猫骑士在废墟小镇中",
-      "source": "https://github.com/STDwang/Dreamscape",
-      "private": false,
-      "size": "54 MB",
-      "accent": "green"
-    },
-    {
       "slug": "darkfairytale",
       "title": "黑暗童话",
       "en": "DARK FAIRY TALE",
@@ -171,31 +117,33 @@
       "slug": "deep-sea-garden",
       "title": "深海花园",
       "en": "DEEP SEA GARDEN",
-      "badge": "WEBGPU · 中文版 · 源码私有",
-      "route": "Web 程序化生成",
+      "badge": "WEBGPU · 程序化海底 · 源码公开",
+      "route": "WebGPU 实时生成",
       "tech": [
-        "WebGPU / WGSL compute",
-        "程序化海床与洞穴",
-        "程序化海草与鱼群",
+        "WebGPU / WGSL 计算着色器",
+        "程序化海床与洞窟",
+        "程序化海藻与鱼群",
         "WebAudio 实时合成",
         "全中文界面"
       ],
-      "desc": "一片完全由代码生成的海底世界：海草森林随水流摇曳，光柱穿过水体，沉船静卧在峡谷边，蝠鲼从头顶掠过。地形、体积雾与生态分布全部跑在 GPU 计算着色器里，没有一张图片和一个模型文件。中文界面版本，需桌面版 Chrome / Edge。",
+      "desc": "一片完全由代码生成的海底世界：海藻森林随水流摇曳，光柱穿过水体，沉船静卧在峡谷边，蝠鲼从头顶掠过。地形、体积雾与生态分布全部跑在 GPU 计算着色器里，没有一张图片和一个模型文件。含外海测绘任务与海底日志，需桌面版 Chrome / Edge（WebGPU）。",
       "keys": [
         "WASD 游动",
         "Q/E 下潜上浮",
         "Shift 加速",
-        "1–6 切换视角",
+        "1–6 观景点",
+        "F 声呐",
         "Esc 菜单",
-        "M 静音",
-        "H 性能统计"
+        "M 静音"
       ],
       "cover": "covers/deep-sea-garden.webp",
-      "coverAlt": "深海花园：阳光穿过海草森林照进海底峡谷",
-      "source": "",
-      "private": true,
-      "size": "97 KB",
-      "accent": "blue"
+      "coverAlt": "深海花园：阳光穿过海藻森林照进海底峡谷",
+      "source": "https://github.com/STDwang/Deep_Sea_Garden",
+      "private": false,
+      "size": "3.1 MB",
+      "accent": "blue",
+      "playUrl": "https://stdwang.github.io/deep-sea-garden/",
+      "backupUrl": "https://wbapp-zx0xlufukmfj9igvb30etd.app.workbuddy.host/deep-sea-garden/?sharecode=QLTHCY272K"
     }
   ]
 }
